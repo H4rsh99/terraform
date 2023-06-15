@@ -44,7 +44,7 @@ variable "instance_name" {
 
 variable "key_public" {
   type    = string
-  default = "private-key.pem"
+  default = "private-key"
 }
 # Define private subnet 1 CIDR block
 variable "private_subnet_1_cidr_block" {
@@ -113,7 +113,7 @@ variable "private_instance2_name" {
 
 variable "key_private" {
   type    = string
-  default = "private-key.pem"
+  default = "private-key"
 }
 
 # gateways
