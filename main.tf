@@ -93,6 +93,12 @@ resource "aws_security_group" "private_subnet_2_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+   ingress {
+    from_port   = 9200
+    to_port     = 9200
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 0
@@ -223,11 +229,11 @@ resource "aws_lb" "load_balancer" {
 resource "aws_lb_target_group_attachment" "attachment_1" {
   target_group_arn = aws_lb_target_group.target_group.arn
   target_id        = aws_instance.private_instance_1.id
-  port             = 80
+  port             = 9200
 }
 
 resource "aws_lb_target_group_attachment" "attachment_2" {
   target_group_arn = aws_lb_target_group.target_group.arn
   target_id        = aws_instance.private_instance_2.id
-  port             = 80
+  port             = 9200
 }
